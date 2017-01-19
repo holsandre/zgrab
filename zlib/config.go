@@ -168,6 +168,9 @@ type Config struct {
 	// S7
 	S7 bool
 
+	// Opcua
+	OPCUA bool
+
 	// HTTP
 	HTTP HTTPConfig
 

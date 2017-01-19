@@ -27,6 +27,7 @@ import (
 	"github.com/zmap/zgrab/ztools/telnet"
 	"github.com/zmap/zgrab/ztools/ztls"
 	"github.com/zmap/zgrab/ztools/scada/siemens"
+	"github.com/zmap/zgrab/ztools/scada/opcua"
 )
 
 type Grab struct {
@@ -65,6 +66,7 @@ type GrabData struct {
 	DNP3         *dnp3.DNP3Log         `json:"dnp3,omitempty"`
 	S7           *siemens.S7Log         `json:"s7,omitempty"`
 	Telnet       *telnet.TelnetLog     `json:"telnet,omitempty"`
+	OPCUA	     *opcua.OPCUALog	   `json:"opcua,omitempty"`
 }
 
 func (g *Grab) MarshalJSON() ([]byte, error) {

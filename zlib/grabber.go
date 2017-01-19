@@ -34,6 +34,7 @@ import (
 	"github.com/zmap/zgrab/ztools/scada/dnp3"
 	"github.com/zmap/zgrab/ztools/scada/fox"
 	"github.com/zmap/zgrab/ztools/scada/siemens"
+	"github.com/zmap/zgrab/ztools/scada/opcua"
 	"github.com/zmap/zgrab/ztools/telnet"
 	"github.com/zmap/zgrab/ztools/zlog"
 	"github.com/zmap/zgrab/ztools/ztls"
@@ -456,6 +457,16 @@ func makeGrabber(config *Config) func(*Conn) error {
 				return err
 			}
 		}
+
+		if config.OPCUA {
+			c.grabData.OPCUA = new(opcua.OPCUALog)
+
+			if err := opcua.GetOPCUAData(c.grabData.OPCUA, c.getUnderlyingConn()); err != nil {
+				c.erroredComponent = "OPCUA"
+				return err
+			}
+		}
+
 
 		if config.DNP3 {
 			c.grabData.DNP3 = new(dnp3.DNP3Log)

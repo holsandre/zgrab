@@ -95,6 +95,7 @@ func init() {
 	flag.BoolVar(&config.Fox, "fox", false, "Send some Niagara Fox Tunneling data")
 	flag.BoolVar(&config.S7, "s7", false, "Send some Siemens S7 data")
 	flag.BoolVar(&config.NoSNI, "no-sni", false, "Do not send domain name in TLS handshake regardless of whether known")
+	flag.BoolVar(&config.OPCUA, "opcua", false, "Send OPC UA Data")
 
 	flag.BoolVar(&config.ExportsOnly, "export-ciphers", false, "Send only export ciphers")
 	flag.BoolVar(&config.ExportsDHOnly, "export-dhe-ciphers", false, "Send only export DHE ciphers")
